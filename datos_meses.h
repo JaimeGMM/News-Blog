@@ -1,0 +1,244 @@
+#ifndef DATOS_MESES_H
+#define DATOS_MESES_H
+#include "fecha.h"
+/**
+	@author Jaime Gamero Maya <jaime@localhost.localdomain>
+*/
+
+
+
+
+/**
+ * Clase datos_meses; Sus atributos son:
+ *    - num_mes
+ *    - mes_espaniol
+ *    - mes_ingles
+ */
+
+typedef char cadena  [60];
+
+
+class datos_meses{
+
+	cadena num_mes;
+	cadena mes_espaniol;
+	cadena mes_ingles;
+	
+	public:
+    
+		/**
+		@brief Constructor por defecto
+		@param
+		@return
+		@pre
+		@post devuelve datos_meses con todos los campos vacios
+		@par O(1)
+		*/
+		datos_meses();
+
+    
+		
+		/**
+		@brief Constructor parametrizado
+		@param nm: numero de mes:variable de tipo cadena
+		@param mes_sp: Mes en español.Variable de tipo cadena
+		@param mes_in: Mes en ingles.Variable del tipo cadena
+		@pre Los parametros nm,mes_sp,mes_in deben ser correctos y del tipo cadena
+		@post Objeto datos_meses creado e inicializado con numero de mes (nm),nombre del mes en ingles(mes_in) y nombre en español (mes_sp)
+		@par O (1)
+		*/
+		datos_meses (cadena nm,cadena mes_sp,cadena mes_in);
+		
+		
+		
+		/**
+		@brief Constructor por copia 
+		@param D: Objeto Datos_per a copiar
+		@return
+		@pre El objeto parametro debe estar creado
+		@post Objeto Datos_per creado e inicializado con la copia del parametro
+		@par O(1)
+		*/
+		datos_meses (const datos_meses &Dm);
+		
+		
+		
+		
+		/**
+		@brief Duplica un objeto datos_meses
+		@param  Dm: parametro del tipo datos_meses
+		@return Objeto de la clase Datos_per, duplicado del parámetro 
+		@pre El objeto por parámetro debe ser válido
+		@post 
+		@par O(1)
+		 */
+		void Clonar_datos_meses (const datos_meses &Dm);
+		
+		
+		
+		
+		/**
+		@brief Muestra el numero de mes
+		@param
+		@return
+		@pre
+		@post
+		@par O(1)
+		*/
+		void Mostrar_num_mes ();
+		
+		
+		
+		/**
+		@brief Muestra el mes en español
+		@param
+		@pre
+		@post
+		@par
+		*/
+		void Mostrar_mes_espaniol ();
+		
+		
+		
+		
+		/**
+		@brief Muestra el mes en ingles
+		@param
+		@return
+		@pre
+		@post Muestra por pantalla el mes en idioma ingles 
+		@par O (1)
+		*/
+		void Mostrar_mes_ingles ();
+		
+		
+		/**
+		@brief El usuario introduce los datos referidos al numero de mes
+		@param 
+		@return
+		@pre 
+		@post el atributo num_mes queda modificado con los datos introducidos por el usuario
+		@par O(1)
+		*/
+		void pedir_num_mes ();
+		
+		
+		
+		/**
+		@brief El usuario introduce los datos referidos al numero de mes
+		@param 
+		@return
+		@pre 
+		@post	el atributo mes_espaniol queda modificado con los datos introducidos por el usuario
+		@par O (1)
+		*/
+		void pedir_mes_espaniol ();
+		
+		
+		
+		/**
+		@brief El usuario introduce los datos referidos al numero de mes
+		@param 
+		@return
+		@pre 
+		@post el atributo mes_ingles queda modificado con los datos introducidos por el usuario
+		@par O (1)
+		*/
+		void pedir_mes_ingles ();	
+		
+		
+		
+		/**
+		@brief Modifica el atributo num_mes del objeto datos_meses
+		@param nm: numero  de mes.Variable del tipo cadena
+		@return
+		@pre La variable  nm (numero de mes) debe ser del tipo cadena
+		@post Objeto datos_mes actualizado con nuevo nombre del contacto
+		@par O(1)
+		*/
+		void poner_num_mes (cadena nm);
+		
+		
+		
+		
+		/**
+		@brief Modifica el atributo mes_espaniol del objeto datos_meses
+		@param mes_esp: mes en español.Variable del tipo cadena
+		@return
+		@pre La variable mes_esp (mes en español) debe ser del tipo cadena
+		@post Objeto datos_mes actualizado con nuevo mes en español
+		@par O (1)
+		*/
+		void poner_mes_espaniol(cadena mes_esp);
+		
+		
+		
+		
+		
+		/**
+		@brief Modifica el atributo mes_ingles del objeto meses
+		@param mes_ing: mes en ingles.Varible del tipo cadena
+		@return
+		@pre La variable mes_ing (mes en ingles) debe ser del tipo cadena
+		@post Objeto datos_mes actualizado con nuevo mes en ingles
+		@par O(1)
+		*/
+		void poner_mes_ingles (cadena mes_ing);
+		
+		
+		
+		
+		/**
+		@brief Obtiene el numero de mes 
+		@param c1: variable del tipo cadena
+		@return numero del mes
+		@pre c1 debe ser del tipo cadena
+		@post atributo num_mes (numero de mes) copiado a la variable c1
+		@par O(1)
+		*/
+		void Obtener_num_mes(cadena &c1)const;
+		
+		
+		
+		
+		/**
+		@brief Obtiene el mes en español
+		@param c1: variable del tipo cadena
+		@return nombre del mes en español
+		@pre c1 debe ser del tipo cadena
+		@post atributo mes_espaniol copiado a la variable c1
+		@par O(1)
+		*/
+		void Obtener_mes_espaniol(cadena &c1)const;
+		
+		
+		
+		/**
+		@brief Obtiene el mes en ingles
+		@param c1: variable del tipo cadena
+		@return nombre del mes en ingles
+		@pre c1 debe ser del tipo cadena
+		@post atributo mes_ingles copiado a la variable c1
+		@par O (1)
+		*/
+		void Obtener_mes_ingles (cadena &C1)const;
+		
+		
+		
+		/**
+		@brief Obtiene la fecha 
+		@param Fech: variable del tipo fecha
+		@return el valor de la fecha
+		@pre la variable debe ser de entrada
+		@post devuelve el vaolr de la fecha
+		@par O (1)
+		*/
+		void Obtener_Fecha2(fecha &Fech)const;
+		
+		
+		
+		~datos_meses();
+
+};
+
+#endif

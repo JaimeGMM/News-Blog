@@ -1,0 +1,164 @@
+#include "ficheros.h"
+
+Ficheros::Ficheros()
+{
+}
+
+
+
+
+void Ficheros:: Volcar_de_fichero_a_lista_datos ()
+{
+	Datos_per DP;
+	fecha fe;
+	int d,m,a;
+	cadena c1,c2,c3,c4,c5,c6,c7;
+	ifstream f;
+	f.open("datos_per.txt");
+	if(f)
+	{
+		while (!f.eof())
+		{
+			f.getline(c1,25,'#');
+			f.getline(c2,25,'#');
+			f.getline(c3,25,'#');
+			f.getline(c4,25,'#');
+			f.getline(c5,15,'#');
+			f.getline(c6,15,'#');
+			f.getline(c7,15,'\n');
+			d=atoi(c4);
+			m=atoi(c5);
+			a=atoi(c6);
+			fe.asignar_fecha(d,m,a);
+			DP.Poner_nombre (c1);
+			DP.Poner_Ap1    (c2);
+			DP.Poner_Ap2    (c3);
+			DP.Poner_fecha  (fe);
+			DP.Poner_num_tel(c7);
+			LD.Crear 		(  );
+			LD.Inicio		(  );
+			LD.Insertar     (DP);
+			LD.Avanza       (  );
+		}
+	}
+	else
+	{
+		cout<<"ERROR: imposible abrir archivo"<<endl;
+	}
+
+	f.close();
+}
+
+
+
+
+void Ficheros:: Volcar_de_fichero_a_lista_meses ()
+{
+	datos_meses DM;
+	ifstream f;
+	cadena c1,c2,c3;
+	f.open("meses.txt");
+	if(f)
+	{
+		while(!f.eof())
+		{
+			f.getline(c1,25,'#');
+			f.getline(c2,25,'#');
+			f.getline(c3,25,'\n');
+			DM.poner_num_mes (c1);
+			DM.poner_mes_espaniol(c2);
+			DM.poner_mes_ingles (c3);
+			LM.Crear ();
+			LM.Inicio();
+			LM.Insertar (DM);
+			LM.Avanza	();
+		}	
+	}
+	else
+	{
+		cout<<"ERROR: Imposible abrir archivo"<<endl;
+	}
+	
+	f.close();
+
+}
+
+
+
+
+void Ficheros:: Volcar_de_lista_datos_a_fichero ()
+{
+	int d,m,a;
+	cadena c1,c2,c3,c4,completa;
+	fecha fe;
+	Datos_per DP; 
+	ofstream OF;
+	OF.open("datos_per.txt");
+	if(OF)
+	{
+		while(!LD.Fin())
+		{
+			LD.Inicio();
+			LD.Consultar (DP);
+			DP.Obtener_nombre  (c1);
+			DP.Obtener_Ap1	   (c2);
+			DP.Obtener_Ap2     (c3);
+			DP.Obtener_Fecha   (fe);
+			DP.Obtener_num_tel (c4);
+			d=fe.obtener_dia   (  );
+			m=fe.obtener_mes   (  );
+			a=fe.obtener_anio  (  );
+			DP.Concatenar_dat_per(c1,c2,c3,d,m,a,c4,completa);
+			OF<<completa;
+		}
+	}
+	else
+	{
+		cout<<"ERROR:Imposible abrir archivo"<<endl;
+	
+	}
+	OF.close();
+}
+
+
+
+
+void Ficheros:: Volcar_de_lista_meses_a_fichero ()
+{
+	cadena c1,c2,c3,completa;
+	datos_meses DM;
+	ofstream OF;
+	OF.open("meses.txt");
+	if(OF)
+	{
+		while(!LM.Fin())
+		{
+			LM.Inicio();
+			LM.Consultar (DM);
+			DM.Obtener_num_mes(c1);
+			DM.Obtener_mes_espaniol(c2);
+			DM.Obtener_mes_ingles(c3);
+			OF<<c1;
+			OF<<'#';
+			OF<<c2;
+			OF<<'#';
+			OF<<c3;
+		}
+	}
+	else
+	{
+		cout<<"ERROR: Imposible abrir archivo"<<endl;
+	}
+	OF.close();
+}
+
+
+
+
+
+
+Ficheros::~Ficheros()
+{
+}
+
+

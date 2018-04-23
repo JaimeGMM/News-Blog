@@ -1,0 +1,87 @@
+
+
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#include <iostream>
+#include <cstdlib>
+#include "gestor_agenda.h"
+using namespace std;
+
+
+
+void menu () {
+  
+	cout << "MENU __________________________________________________________" << endl;
+	cout << "1.- Añadir Contacto a la lista de contactos                    " << endl;
+	cout << "2.- Borrar Contacto de la lista de contactos                   " << endl;
+	cout << "3.- Listado de contactos que cumplan edad en un determinado mes" << endl;
+	cout <<	 "   introducido por el usuario " << endl;
+	cout << "4.- Listado de contactos que superen una edad determinada  introducida por el usuario" << endl;
+	cout << "5.- Mostrar el contenido de la agenda en versión española    "<< endl;
+	cout << "6.- Mostrar el contenido de la agenda en versión inglesa     "<< endl;
+	cout << "7.- SALIR DEL MENU												"<<endl;
+}
+
+
+
+int main(int argc, char *argv[])
+{
+  cadena tlf,mes;
+  int edad=0;
+  Datos_per Dat;
+  char c;
+  bool fin=false;
+  Gestor_agenda G;
+  G.Volcar_de_fichero_a_lista_datos 	();
+  G.Volcar_de_fichero_a_lista_meses 	();
+  do
+  {
+  	menu();
+    cin>>c;
+	switch(c)
+	{
+		case '1':G.Pedir_contacto		  (Dat);
+				 G.Insertar_final_listaD  (Dat);
+				 break;
+	
+		case '2':cout<<"Introduce numero de teléfono del contacto a borrar"<<endl;
+				 cin>>tlf;
+				 G.Borrar_de_lista_datos  (tlf);
+				 break;
+				 
+		case '3':cout<<"Introduce mes"<<endl; 
+				 cin>>mes; 
+				 cout<<""<<endl;
+				 cout<<"A continuación se mostrará el listado de personas que cumplen años en el mes    			introducido "<<endl;
+				 G.listado_personas_cumpleanios  (mes); 
+				 break;
+				
+		case '4':cout<<"Introduce edad"<<endl;
+				 cout<<"A continuación se mostrará el listado de personas que son mayores de la edad 				introducida"<<endl;
+				 cin>>edad;
+				 /*
+				 G.funcion_por_construir();
+				 */
+				 break;
+		
+		case '5':cout<<"A continuación se mostrará el contenido de la agenda en español"<<endl;		 
+				 G.Mostrar_contactos_en_espaniol  ();
+				 break;
+	
+		case '6':cout<<"A continuación se mostrará el contenido de la agenda en ingles"<<endl;
+				 G.Mostrar_contactos_en_ingles			();	
+				 break;
+				 
+		case '7':fin=true;
+				 break;
+	
+	}
+	  
+  }
+	while(!fin);
+	G.Volcar_de_lista_datos_a_fichero 	();
+	
+	return EXIT_SUCCESS;
+}

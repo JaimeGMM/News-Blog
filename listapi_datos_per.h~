@@ -1,0 +1,143 @@
+#ifndef LISTAPI_DATOS_PER_H
+#define LISTAPI_DATOS_PER_H
+#include"datos_per.h"
+
+
+/**
+	@author Jaime Gamero Maya <jaime@localhost.localdomain>
+*/
+
+typedef struct nodo
+{
+	Datos_per info;
+	nodo* suce;
+};
+
+typedef nodo * lista;
+
+class ListaPi_datos_per{
+
+	lista api;
+	lista L;
+	
+	
+	public:
+    
+		/**
+		@brief Crea la lista dinamica que contendá en cadao nodo la clase datos_per
+		@param
+		@return
+		@pre
+		@post crea una lista vacia
+		@par O(1)
+		*/
+		void Crear     ();
+		
+		
+		
+		/**
+		@brief Indica si la lista esta llena o vacia.
+		@param
+		@retval TRUE: devulve este valor si la lista esta  vacia
+		@retval FALSE: devuelve este valor si la lista esta llena
+		@pre La lista debe estar creada
+		@post Devuelve TRUE o FALSE dependiendo de si la lista esta vacia o llena respectivamente
+		@par O (1)
+		*/
+		bool Vacia	   ();	
+		
+		
+		
+		/**
+		@brief Pone el punto de interes apuntando al principio de la lista
+		@param
+		@return
+		@pre La lista debe estar creada
+		@post El punto de interes queda apuntando al principio de la lista
+		@par O(1)
+		*/
+		void Inicio    ();
+		
+		
+		
+		/**
+		@brief Avanza el pi en una posición
+		@param
+		@return
+		@pre
+		@post La lista debe estar creada
+		@par El pi queda apuntando al nodo siguiente
+		 */
+		void Avanza    ();
+		
+		
+		
+			
+		/**
+		@brief Nos dice si estamos al final de la lista.Esta al final,si api apunta a NULL o si api no tiene nodo sucesor
+		@param
+		@retval TRUE: si estamos al final de la lista
+		@retval FALSE: si no estamos al final de la lista
+		@pre La lista debe estar creada
+		@post Nos devuelve true o false dependiendo de si ha llegado al final de la lista o no 
+		@par O (1)
+		*/
+		bool Fin	   ();
+		
+		
+		
+		
+		
+		/**
+		@brief Inserta el nuevo elemento detras del api.Si api es nulo se inserta al principio
+		@param DP: parámetro del tipo datos_per
+		@return La lista con un nodo mas (el insertado)
+		@pre La lista debe estar creada
+		@post La lista tiene un nodo mas
+		@par O (1)
+		 */
+		void Insertar   (Datos_per DP);	
+		
+		
+		
+		/**
+		@brief se borra el elemento siguiente al api. Si api es NULL se borra el primero
+		@param
+		@return
+		@pre La lista debe estar creada
+		@post El nodo siguiente al api queda borrado
+		@par O (1)
+		 */
+		void Borrar	   ();	
+		
+		
+		
+		/**
+		@brief devuelve el tipo dato donde apunta el pi
+		@param DP: parámetro del tipo datos_per
+		@return el parametro DP
+		@pre La lista debe estar creada
+		@post devuelve la variable DP
+		@par O(1)
+		*/
+		void Consultar (Datos_per &DP);
+		
+		
+		/**
+		@brief Elimina la lista de los datos personales del contacto
+		@param
+		@return
+		@pre La lista debe contener al menos un nodo
+		@post La lista queda eliminada
+		@par O(n)
+		*/
+		void Eliminar ();
+		
+		
+		ListaPi_datos_per();
+
+    ~ListaPi_datos_per();
+
+};
+
+#endif

@@ -1,0 +1,32 @@
+
+#ifndef FICHEROS_H
+#define FICHEROS_H
+#include"listapi_datos_meses.h"
+#include"listapi_datos_per.h"
+#include <fstream.h>
+/**
+	@author Jaime Gamero Maya <jaime@localhost.localdomain>
+*/
+
+class Ficheros{
+
+	listapi_datos_meses LM;
+	ListaPi_datos_per	LD;
+	
+	public:
+     
+		void Volcar_de_fichero_a_lista_datos ();
+		void Volcar_de_fichero_a_lista_meses ();
+		void Volcar_de_lista_datos_a_fichero ();
+		void Volcar_de_lista_meses_a_fichero ();
+		
+		
+		
+		
+		Ficheros();
+
+       ~Ficheros();
+
+};
+
+#endif
